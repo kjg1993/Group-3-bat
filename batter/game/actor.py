@@ -22,7 +22,6 @@ class Actor:
     def set_velocity(self, velocity):
         """sets the acotrs velocity
         """
-
         self._velocity = velocity
 
     def get_position(self):
@@ -35,3 +34,35 @@ class Actor:
     def get_text(self):
 
         return self._text
+
+
+    def get_hitbox(self):
+        hit_box = {}
+
+        position = self.get_position()
+
+        # get the hit box above the ball object
+        x = position.get_x() 
+        y = position.get_y() -1
+        hit_box["upper"] = [Point(x,y)]
+
+        # get the hit box under the ball
+        x = position.get_x() 
+        y = position.get_y() + 1
+        hit_box["bottom"] = [Point(x,y)]
+
+        # get the hit box to the right of the ball object
+        x = position.get_x() + 1
+        y = position.get_y() 
+        hit_box["upper"] = [Point(x,y)]
+
+        # get the hit box to the left of the ball
+        x = position.get_x() - 1
+        y = position.get_y() 
+        hit_box["bottom"] = [Point(x,y)]
+
+        return hit_box
+
+
+
+
